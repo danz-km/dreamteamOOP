@@ -1,7 +1,7 @@
 import java.util.*;
 class Student {
     
-    //
+    //declaration of private instance variables (First Name, Last Name, Student Matric ID, Address, Program and Gender)
     private String fname;
     private String lname;
     private int id;
@@ -9,6 +9,7 @@ class Student {
     private String program;
     private char gender;
 
+    //
     Student(){}
     Student(int id, String fname, String lname, char gender, String program, String address) {
         this.id = id;
@@ -19,6 +20,7 @@ class Student {
         this.address= address;
     }
 
+    //Providing setter and getter methods of the declared private instance variables
     public void setName(String fname) {
         this.fname = fname;
     }
@@ -89,7 +91,7 @@ public class RegisSys {
             System.out.println(" UNIVERSITY MALAYSIA SABAH ");
             System.out.println("STUDENT REGISTRATION SYSTEM");
             System.out.println("----------------------------");
-            System.out.println("Choose Your Operataion (1-6)");
+            System.out.println("Choose Your Operation (1-6)");
             System.out.println("1. ADD STUDENT"); 
             System.out.println("2. DELETE STUDENT"); //enter student id and then use delete method in Student class to delete
             System.out.println("3. UPDATE STUDENT"); //enter student id and then use edit method in Student class to edit
@@ -100,6 +102,8 @@ public class RegisSys {
             choice = scanner.nextInt();
 
             switch (choice) {
+
+            //Adding 
                 case 1:
                     System.out.print("Enter Student Matric Id : ");
                     int matricId = scanner.nextInt();
@@ -117,6 +121,8 @@ public class RegisSys {
 
                     c.add(new Student(matricId, fname, lname, gender, program, address));
                     break;
+                
+                //Deletion
                 case 2:
                     boolean found = false;
                     System.out.print("Enter Student Matric Id to Delete: ");
@@ -138,6 +144,8 @@ public class RegisSys {
                     }
                     System.out.println("------------------------------------------------------------");
                     break;
+
+                //Update 
                 case 3:
                     found = false;
                     System.out.println("Enter Student Matric Id to Update : ");
@@ -146,6 +154,7 @@ public class RegisSys {
                     ListIterator<Student> li = c.listIterator();
                     while(li.hasNext()) {
                         Student s = li.next();
+                        //Check to see if record of matricID exists
                         if(s.getId() == matricId) {
                             System.out.print("Enter New Student First Name : ");
                             fname = scanner1.next();
@@ -170,6 +179,7 @@ public class RegisSys {
                     }
                     System.out.println("----------------------------------------------------------------------");
                     break;
+                //Search   
                 case 4:
                     found = false;
                     System.out.println("Enter Student Matric Id to Search : ");
@@ -178,6 +188,7 @@ public class RegisSys {
                     i = c.iterator();
                     while(i.hasNext()) {
                         Student s = i.next();
+                        //Check to see if record of matricID exists
                         if(s.getId() == matricId) {
                             found = true;
                             System.out.println("--------------------------------------------------------------------------------");
@@ -192,6 +203,8 @@ public class RegisSys {
                     }
                     System.out.println("----------------------------------------------------------------------");
                     break;
+                
+                //Display 
                 case 5:
                 System.out.println("--------------------------------------------------------------------------------");
                 System.out.println("Student Registration System - Display All Students");
@@ -208,6 +221,7 @@ public class RegisSys {
                 default:
                     break;
             }
+            //If user enters 6, program ends
         }while(choice!=6);
         
         scanner.close();
